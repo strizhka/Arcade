@@ -256,14 +256,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cf36fce8061a8409c2d94de614322d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tubeTransform: {fileID: 98818657}
-  tableTransform: {fileID: 747122431}
-  spawnPoint: {fileID: 556862453}
-  cannonBallPrefab: {fileID: 1464190184578582014, guid: 3b7c62c8a78719744bc7dc469f6d2ceb, type: 3}
-  fireForce: 40
-  moveSpeed: 10
-  rotationSpeed: 50
-  maxVerticalAngle: 45
+  _tubeTransform: {fileID: 98818657}
+  _tableTransform: {fileID: 747122431}
+  _spawnPoint: {fileID: 556862453}
+  _cannonBallPrefab: {fileID: 1464190184578582014, guid: 3b7c62c8a78719744bc7dc469f6d2ceb, type: 3}
+  _fireForce: 10
+  _rotationSpeed: 50
+  _maxVerticalAngle: 45
   minVerticalAngle: -5
 --- !u!1 &674571591
 GameObject:
