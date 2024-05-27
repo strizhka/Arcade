@@ -13,10 +13,22 @@ public class Cannon : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 50f;
     [SerializeField] private float _maxVerticalAngle = 45f;
     [SerializeField] private float _minVerticalAngle = -5f;
+    [SerializeField] private float _cooldownTime = 1f;
+    [SerializeField] private AudioClip _audio;
+    [SerializeField] private ParticleSystem _particleSystem;
+
+    private AudioSource _audioSource;
+
+
+    private float _lastShot;
 
     private Vector3 _inputHorizontal;
     private Vector3 _inputVertical;
 
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -31,6 +43,7 @@ public class Cannon : MonoBehaviour
 
         _tableTransform.Rotate(_inputHorizontal * (_rotationSpeed * Time.deltaTime));
 
+
         _inputVertical = new Vector3(0, UnityEngine.Input.GetAxisRaw("Vertical"), 0);
         _inputVertical = _inputVertical.normalized;
 
@@ -39,11 +52,15 @@ public class Cannon : MonoBehaviour
 
     private void Shoot()
     {
-        if (UnityEngine.Input.GetButtonDown("Fire1"))
+        if (UnityEngine.Input.GetButtonDown("Fire1") && !(Time.time - _lastShot < _cooldownTime))
         {
+            _lastShot = Time.time;
+
+            _audioSource.PlayOneShot(_audio);
+            _particleSystem.Play();
+
             GameObject cannonBall = Instantiate(_cannonBallPrefab, _spawnPoint.position, _spawnPoint.rotation);
 
-            // ƒобавл€ем силу €дру по направлению дула
             Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
             rb.AddForce(_spawnPoint.forward * (_fireForce * 100));
 
