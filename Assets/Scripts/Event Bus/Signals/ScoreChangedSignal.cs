@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 public class ScoreChangedSignal
 {
     public readonly int Score;
-    public readonly int MaxScore;
 
     public ScoreChangedSignal(int score)
     {
         Score = score;
 
-        if (Score > MaxScore)
+        if (score > PlayerPrefs.GetInt("MaxScore", 0))
         {
-            MaxScore = Score;
+            PlayerPrefs.SetInt("MaxScore", score);
         }
     }
 }

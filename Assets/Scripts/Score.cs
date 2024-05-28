@@ -22,6 +22,7 @@ public class Score : MonoBehaviour
 
     private void Awake()
     {
+        _score = 0;
         if (_uiScore == null)
         {
             _uiScore = GetComponent<TextMeshProUGUI>();
@@ -55,7 +56,7 @@ public class Score : MonoBehaviour
 
         if (_uiScore != null)
         {
-            _uiScore.text = _score.ToString();
+            _uiScore.text = $"Current score: {_score}\nMax score: {PlayerPrefs.GetInt("MaxScore", 0)}";
         }
         else
         {
