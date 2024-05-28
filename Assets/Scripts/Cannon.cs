@@ -51,24 +51,6 @@ public class Cannon : MonoBehaviour
         _tubeTransform.Rotate(_inputVertical * (_rotationSpeed * Time.deltaTime));
     }
 
-    //private void Shoot()
-    //{
-    //    if (UnityEngine.Input.GetButtonDown("Fire1") && !(Time.time - _lastShot < _cooldownTime) && Time.timeScale != 0)
-    //    {
-    //        _lastShot = Time.time;
-
-    //        _audioSource.PlayOneShot(_audio);
-    //        _particleSystem.Play();
-
-    //        GameObject cannonBall = Instantiate(_cannonBallPrefab, _spawnPoint.position, _spawnPoint.rotation);
-
-    //        Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
-    //        rb.AddForce(_spawnPoint.forward * (_fireForce * 100));
-
-    //        Destroy(cannonBall, 3f);
-    //    }
-    //}
-
     private void Shoot()
     {
         if (UnityEngine.Input.GetButtonDown("Fire1") && !(Time.time - _lastShot < _cooldownTime) && Time.timeScale != 0)
