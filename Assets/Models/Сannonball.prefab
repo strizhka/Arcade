@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 4611789569283261779}
   - component: {fileID: 6048381212995138559}
   - component: {fileID: 198982202399766455}
-  - component: {fileID: 1498709919328218086}
-  - component: {fileID: 7998722151350752597}
+  - component: {fileID: 3307099229157416642}
   m_Layer: 0
   m_Name: "\u0421annonball"
-  m_TagString: Untagged
+  m_TagString: CannonBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +134,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1498709919328218086
+--- !u!114 &3307099229157416642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,19 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1464190184578582014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f063e389cca3ba46a5410688d6a1eef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7998722151350752597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464190184578582014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36dc0955711d3924b91397a5192dcb0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 618cddbe383eca643bd87bde0fe02bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _uiScore: {fileID: 3247897520596837601, guid: 97c7735286a272541892fc739b6cbde9, type: 3}

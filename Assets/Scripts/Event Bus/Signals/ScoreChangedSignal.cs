@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 public class ScoreChangedSignal
 {
     public readonly int Score;
+    public readonly int MaxScore;
 
     public ScoreChangedSignal(int score)
     {
         Score = score;
+
+        if (Score > MaxScore)
+        {
+            MaxScore = Score;
+        }
     }
 }
