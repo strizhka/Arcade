@@ -10,19 +10,27 @@ using UnityEngine.UIElements;
 using UnityEngine.UI;
 using Palmmedia.ReportGenerator.Core.Common;
 using UnityEditor.SceneManagement;
+using System.Collections;
 
 public class Score : MonoBehaviour
 {
-    private static int _score = 0;
-    [SerializeField] private TextMeshProUGUI _uiScore;
 
+    [SerializeField] private GameObject _screen;
+
+    private TextMeshProUGUI _uiScore;
+
+    private static int _score = 0;
+    private static bool _isDoubled = false;
+    public static GameObject _doubledScreen;
     private EventBus _eventBus;
 
     public static int CurrentScore => _score;
+    public static bool IsDoubled => _isDoubled;
 
     private void Awake()
     {
-        _score = 0;
+        _doubledScreen = _screen;
+        _isDoubled = false;
         if (_uiScore == null)
         {
             _uiScore = GetComponent<TextMeshProUGUI>();
@@ -42,6 +50,7 @@ public class Score : MonoBehaviour
             _eventBus.Subscribe<ScoreChangedSignal>(DisplayScore);
             _eventBus.Subscribe<ScoreChangedSignal>(Die);
             _eventBus.Subscribe<ScoreChangedSignal>(Win);
+            _eventBus.Invoke(new ScoreChangedSignal(0));
         }
         else
         {
@@ -62,6 +71,15 @@ public class Score : MonoBehaviour
         {
             Debug.LogError("UI Score reference is missing when trying to display score!");
         }
+    }
+
+    public static IEnumerator DoubleCoroutine()
+    {
+        _isDoubled = true;
+        _doubledScreen.SetActive(true);
+        yield return new WaitForSeconds(5);
+        _doubledScreen.SetActive(false);
+        _isDoubled = false;
     }
 
     private void Die(ScoreChangedSignal signal)

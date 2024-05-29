@@ -6,8 +6,15 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
-    [SerializeField] private float _remainingTime;
     [SerializeField] private GameObject  _gameOverScreen;
+    [SerializeField] private float _timerTime;
+
+    public static float _remainingTime;
+
+    private void Start()
+    {
+        _remainingTime = _timerTime;
+    }
 
     private void Update()
     {

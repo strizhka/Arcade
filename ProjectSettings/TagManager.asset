@@ -7,11 +7,17 @@ TagManager:
   - target
   - targetGood
   - targetBad
+  - CannonBall
+  - Floor
+  - timerBonus
+  - antiBonus
+  - scoreBonus
+  - bombBonus
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Lights
   - Water
   - UI
   - 

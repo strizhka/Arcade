@@ -81,7 +81,7 @@ public class Cannon : MonoBehaviour
             Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
             rb.AddForce(_spawnPoint.forward * (_fireForce * 100));
 
-            Destroy(cannonBall, 3f);
+            Destroy(cannonBall, 6f);
         }
     }
 

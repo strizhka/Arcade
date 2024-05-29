@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace Assets.Scripts
+{
+    public class TargetSpawner : MonoBehaviour
+    {
+        [SerializeField] private List<GameObject> _targets = new List<GameObject>();
+        [SerializeField] private float _spawnCooldown;
+        [SerializeField] private Transform _spawnParent;
+        [SerializeField] private Vector2 _xRange;
+        [SerializeField] private Vector2 _yRange;
+
+        private void Start()
+        {
+            StartCoroutine(Spawn());
+        }
+
+        public IEnumerator<WaitForSeconds> Spawn()
+        {
+            Vector3 randomPoint = new Vector3(UnityEngine.Random.Range(_xRange.x, _xRange.y), _spawnParent.position.y, UnityEngine.Random.Range(_yRange.x, _yRange.y));
+            GameObject target = Instantiate(_targets[UnityEngine.Random.Range(0, _targets.Count)], randomPoint, Quaternion.Euler(UnityEngine.Random.Range(0, 360), 0, 0), _spawnParent);
+            yield return new WaitForSeconds(_spawnCooldown);
+            StartCoroutine(Spawn());
+        }
+
+
+    }
+}
