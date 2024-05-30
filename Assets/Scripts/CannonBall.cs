@@ -36,18 +36,18 @@ public class CannonBall : MonoBehaviour
     {
         if (Score.IsDoubled)
         {
-            _score = Mathf.Clamp(_score + score * 2, 0, 10000);
+            _score = Mathf.Clamp(_score + score * 2, 0, 100000);
         }
         else
         {
-            _score = Mathf.Clamp(_score + score, 0, 10000);   
+            _score = Mathf.Clamp(_score + score, 0, 100000);   
         }
         _eventBus.Invoke(new ScoreChangedSignal(_score));
     }
 
     private void RemoveScore(int score)
     {
-        _score = Mathf.Clamp(_score - score, 0, 10000);
+        _score = Mathf.Clamp(_score - score, 0, 100000);
         _eventBus.Invoke(new ScoreChangedSignal(_score));
     }
 
@@ -71,7 +71,8 @@ public class CannonBall : MonoBehaviour
             if (collision.gameObject.CompareTag("bombBonus"))
             {
                 AddScore(target.Score);
-                gameObject.GetComponent<SphereCollider>().radius = 10;
+                gameObject.GetComponent<SphereCollider>().radius = 15;
+                Destroy(gameObject, 1);
             }
 
             if (collision.gameObject.CompareTag("scoreBonus"))

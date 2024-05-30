@@ -19,7 +19,7 @@ public class Score : MonoBehaviour
 
     private TextMeshProUGUI _uiScore;
 
-    private static int _score = 0;
+    private static int _score;
     private static bool _isDoubled = false;
     public static GameObject _doubledScreen;
     private EventBus _eventBus;
@@ -29,6 +29,7 @@ public class Score : MonoBehaviour
 
     private void Awake()
     {
+        _score = 0;
         _doubledScreen = _screen;
         _isDoubled = false;
         if (_uiScore == null)
@@ -48,8 +49,6 @@ public class Score : MonoBehaviour
         if (_eventBus != null)
         {
             _eventBus.Subscribe<ScoreChangedSignal>(DisplayScore);
-            _eventBus.Subscribe<ScoreChangedSignal>(Die);
-            _eventBus.Subscribe<ScoreChangedSignal>(Win);
             _eventBus.Invoke(new ScoreChangedSignal(0));
         }
         else
@@ -82,29 +81,11 @@ public class Score : MonoBehaviour
         _isDoubled = false;
     }
 
-    private void Die(ScoreChangedSignal signal)
-    {
-        if (signal.Score < 0)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
-
-    private void Win(ScoreChangedSignal signal)
-    {
-        if (signal.Score >= 10000)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
-
     private void OnDestroy()
     {
         if (_eventBus != null)
         {
-            _eventBus.Unsubscribe<ScoreChangedSignal>(Die);
             _eventBus.Unsubscribe<ScoreChangedSignal>(DisplayScore);
-            _eventBus.Unsubscribe<ScoreChangedSignal>(Win);
         }
     }
 }

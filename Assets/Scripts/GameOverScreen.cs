@@ -20,7 +20,7 @@ public class GameOverScreen : MonoBehaviour
 
         if (_gameOverScore != null)
         {
-            _gameOverScore.text = "Final Score\n" + _score.ToString();
+            _gameOverScore.text = $"Final Score\n{Score.CurrentScore}\nMax score: {PlayerPrefs.GetInt("MaxScore", 0)} ";
         }
         else
         {
