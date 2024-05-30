@@ -14,11 +14,13 @@ public class MainMenu : MonoBehaviour
 
     public void TutorialBtn()
     {
+        Time.timeScale = 1;
         _tutorual.SetActive(true);
     }
 
     public void CloseBtn()
     {
+        Time.timeScale = 1;
         _tutorual.SetActive(false);
     }
 
@@ -26,5 +28,4 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
 }

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class GameOverScreen : MonoBehaviour
 {
-    private string _score;
-    [SerializeField] private TextMeshProUGUI _uiScore;
     [SerializeField] private TextMeshProUGUI _gameOverScore;
 
     public void Start()
@@ -16,11 +14,10 @@ public class GameOverScreen : MonoBehaviour
 
     private void DisplayScore()
     {
-        _score = _uiScore.text;
 
         if (_gameOverScore != null)
         {
-            _gameOverScore.text = $"Final Score\n{Score.CurrentScore}\nMax score: {PlayerPrefs.GetInt("MaxScore", 0)} ";
+            _gameOverScore.text = $"Max score\n{PlayerPrefs.GetInt("MaxScore", 0)}";
         }
         else
         {
