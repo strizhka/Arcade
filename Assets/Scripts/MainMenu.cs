@@ -22,4 +22,9 @@ public class MainMenu : MonoBehaviour
         _tutorual.SetActive(false);
     }
 
+    public void ExitBtn()
+    {
+        Application.Quit();
+    }
+
 }
